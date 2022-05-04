@@ -3,7 +3,7 @@ export default [
     id: '1',
     title: "Clean Architecture: A Craftsman's Guide to Software Structure and Design",
     image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/cleanarchitecture.jpg',
-    avgRating: 4.2,
+    avgRating: 2.2,
     ratings: 1325,
     price: 20.98,
     oldPrice: 24.06,
@@ -44,7 +44,7 @@ export default [
     oldPrice: 120.06,
   },
   {
-    id: '5',
+    id: '6',
     title: "Mouse Havit Mechanical Keyboard Wired 89 Keys Gaming Keyboard",
     image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse1.jpg',
     avgRating: 4.8,
@@ -53,7 +53,7 @@ export default [
     oldPrice: 120.06,
   },
   {
-    id: '5',
+    id: '7',
     title: "Mouse Havit Mechanical Keyboard Wired 89 Keys Gaming Keyboard",
     image: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/products/mouse2.jpg',
     avgRating: 4.8,
