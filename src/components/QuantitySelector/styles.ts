@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#d1d1d1',
   },
   buttonText:{
-    
+    fontSize: 18,
   },
   quantity:{
     color: '#007eb9',

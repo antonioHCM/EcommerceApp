@@ -16,7 +16,13 @@ price: {
     textDecorationLine : 'line-through',
   },
   description:{
-    fontSize: 11,
+    marginVertical: 10,
+    lineHeight: 29,
+  },
+  root:{
+    padding: 10,
+    backgroundColor: 'white',
+
   },
 });
 
