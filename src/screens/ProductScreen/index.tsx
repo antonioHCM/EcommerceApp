@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import product from '../../data/product';
@@ -12,7 +12,7 @@ const ProductScreen = () => {
     const [selectedOption, setSelectedOption] = useState(product.options ? product.options[0] : null);
     const [quantity, setQuantity] = useState(1);
   return (
-    <View style={styles.root}>
+    <ScrollView style={styles.root}>
       <Text  style={styles.title}>Product screen</Text>
       {/* Image corousel*/}
       <ImageCarousel images={product.images}/>
@@ -37,7 +37,7 @@ const ProductScreen = () => {
       {/* Button*/}
       <Button text={'Add to cart'} onPress={() => {console.warn('Add to cart')}} />
       <Button text={'Buy now'} onPress={() => {console.warn('Buy now')}} />
-    </View>
+    </ScrollView>
   );
 };
 
