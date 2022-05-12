@@ -1,27 +1,41 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View,StyleSheet, FlatList } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import CartPoductItem from '../../components/CartProductItem';
+import Button from '../../components/Button';
 import products from '../../data/cart';
+import styles from './styles';
 
 const ShoppingCartScreen = () => {
+  const totalPrice = products.reduce((sumPrice, product) => sumPrice + product.item.price * product.quantity, 0 );
   return (
-    <View style={styles.page}>
-      {/*Render Product component*/}
+    <View style={{padding: 10}}>
+      {/* Render Product Componet */}
       <FlatList
-        data={products}
-        renderItem={({item}) => <CartPoductItem cartItem={item} />}
-        showsVerticalScrollIndicator= {false}
-         />
+        data={cartProducts}
+        renderItem={({item}) => <CartProductItem cartItem={item} />}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={() => (
+          <View>
+            <Text style={{fontSize: 18}}>
+              Subtotal ({cartProducts.length} items):{' '}
+              <Text style={{color: '#e47911', fontWeight: 'bold'}}>
+                ${totalPrice.toFixed(2)}
+              </Text>
+            </Text>
+            <Button
+              text="Proceed to checkout"
+              onPress={onCheckout}
+              containerStyles={{
+                backgroundColor: '#f7e300',
+                borderColor: '#c7b702',
+              }}
+            />
+          </View>
+        )}
+      />
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-
-  page: {
-    padding:10,
-  }
-});
+}
 
 export default ShoppingCartScreen;

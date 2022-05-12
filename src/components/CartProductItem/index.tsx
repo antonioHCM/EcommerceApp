@@ -57,7 +57,7 @@ const CartPoductItem = ({cartItem}: CartProductItemProps) => {
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
       </View>
       </View>
-  )
-}
+  );
+};
 
 export default CartPoductItem;
