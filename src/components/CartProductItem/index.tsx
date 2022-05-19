@@ -28,11 +28,11 @@ const CartPoductItem = ({cartItem}: CartProductItemProps) => {
     const [quantity, setQuantity] = useState(quantityProp);
   
     return (
-    <View>
     <View style={styles.root}>
-        <Image style={styles.image} source={{ uri: item.image}}/>
-        <View style={styles.rightContainer}>
-          <Text style={styles.title} numberOfLines={3} >{item.title}</Text>
+      <View style={styles.row}>
+          <Image style={styles.image} source={{ uri: item.image}}/>
+            <View style={styles.rightContainer}>
+              <Text style={styles.title} numberOfLines={3} >{item.title}</Text>
           {/*rating*/}
           <View style={styles.ratingsContainer}>
             {[0,0,0,0,0].map((el, i) =>
@@ -50,13 +50,13 @@ const CartPoductItem = ({cartItem}: CartProductItemProps) => {
           {item.oldPrice &&
            <Text style={styles.oldPrice}>  ${item.oldPrice}</Text>
            }
-          </Text>
-        </View>
-      </View>
-      <View style={styles.quantityContainer}>
+                  </Text>
+                </View>
+              </View>
+            <View style={styles.quantityContainer}>
         <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
       </View>
-      </View>
+    </View>
   );
 };
 

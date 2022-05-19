@@ -9,33 +9,20 @@ import styles from './styles';
 const ShoppingCartScreen = () => {
   const totalPrice = products.reduce((sumPrice, product) => sumPrice + product.item.price * product.quantity, 0 );
   return (
-    <View style={{padding: 10}}>
-      {/* Render Product Componet */}
+    <View style={styles.page}>
+      <View>
+        <Text style={styles.subtotal}>Subtotal({products.length} items): 
+        <Text style={styles.price}>${totalPrice.toFixed(2)}</Text>
+        </Text>
+        <Button text="Procede to checkout" onPress={() => console.warn('go to checkout')}/>
+      </View>
+      {/*Render Product component*/}
       <FlatList
-        data={cartProducts}
-        renderItem={({item}) => <CartProductItem cartItem={item} />}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() => (
-          <View>
-            <Text style={{fontSize: 18}}>
-              Subtotal ({cartProducts.length} items):{' '}
-              <Text style={{color: '#e47911', fontWeight: 'bold'}}>
-                ${totalPrice.toFixed(2)}
-              </Text>
-            </Text>
-            <Button
-              text="Proceed to checkout"
-              onPress={onCheckout}
-              containerStyles={{
-                backgroundColor: '#f7e300',
-                borderColor: '#c7b702',
-              }}
-            />
-          </View>
-        )}
-      />
+        data={products}
+        renderItem={({item}) => <CartPoductItem cartItem={item} />}
+         />
     </View>
   );
-}
+};
 
 export default ShoppingCartScreen;
