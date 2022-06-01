@@ -1,9 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { View, Text,Image } from 'react-native';
+import { View, Text,Image ,Pressable } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
 import styles from './styles';
 import products from '../../data/products';
+import { useNavigation } from '@react-navigation/native';
+
 
 interface ProductItemProps {
     item: {
@@ -19,8 +21,14 @@ interface ProductItemProps {
 
 const PoductItem = (props : ProductItemProps) => {
     const { item } = props;
+    const navigation = useNavigation();
+
+    const onPress = () => {
+      console.warn('item pressed');
+      navigation.navigate('ProductScreen', {id: item.id});
+    };
   return (
-    <View style={styles.root}>
+    <Pressable onPress={onPress} style={styles.root}>
         <Image style={styles.image} source={{ uri: item.image}}/>
         <View style={styles.rightContainer}>
           <Text style={styles.title} numberOfLines={3} >{item.title}</Text>
@@ -43,7 +51,7 @@ const PoductItem = (props : ProductItemProps) => {
            }
           </Text>
         </View>
-      </View>
+      </Pressable>
   )
 }
 
