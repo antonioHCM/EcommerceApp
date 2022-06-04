@@ -7,7 +7,7 @@ import { Picker } from '@react-native-picker/picker';
 import Button from '../../components/Button';
 
 const countries = countryList.getData();
-console.log(countries);
+
 const AddressScreen = () => {
     const [country, setCountry] = useState(countries[0].code);
     const [fullname, setFullName] = useState('');
