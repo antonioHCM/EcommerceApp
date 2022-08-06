@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import MenuScreen from '../screens/MenuScreen/index';
 import HomeScreen from '../screens/HomeScreen/Index';
 import ShoppingCartStack from './ShoppingCartStack';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -42,7 +43,7 @@ const BottomTabNav = () => {
           }}
         />
         <Tab.Screen
-         component={HomeScreen}
+         component={MenuScreen}
           name="More"
           options={{
             tabBarIcon: ({color}) =>(

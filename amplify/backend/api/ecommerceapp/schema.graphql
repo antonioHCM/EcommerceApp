@@ -1,0 +1,30 @@
+type Product @model  @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String!
+  discription: String
+  image: String!
+  images: [String!]!
+  options: [String!]
+
+  avgRating: Float!
+  ratings: Int
+
+  price: Float!
+  oldPrice: Float
+}
+
+type CartProduct @model  @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userSub: String!
+  quanntity: Int!
+  option: String
+
+  productID: ID!
+  product: Product @connection(fields: ["productID"])
+}
+
+# type Order @model {
+#   id: ID!
+#   userSub: String!
+
+# }

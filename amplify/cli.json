@@ -4,16 +4,16 @@
       "addmissingownerfields": true,
       "improvepluralization": false,
       "validatetypenamereservedwords": true,
-      "useexperimentalpipelinedtransformer": true,
       "enableiterativegsiupdates": true,
       "secondarykeyasgsi": true,
       "skipoverridemutationinputtypes": true,
-      "transformerversion": 2,
       "suppressschemamigrationprompt": true,
       "securityenhancementnotification": false,
       "showfieldauthnotification": false,
       "usesubusernamefordefaultidentityclaim": true,
-      "usefieldnameforprimarykeyconnectionfield": false
+      "usefieldnameforprimarykeyconnectionfield": false,
+      "useexperimentalpipelinedtransformer": false,
+      "transformerversion": 1
     },
     "frontend-ios": {
       "enablexcodeintegration": true
