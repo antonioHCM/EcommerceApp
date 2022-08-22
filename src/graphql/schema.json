@@ -1382,7 +1382,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "quanntity",
+          "name" : "quantity",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -1533,7 +1533,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "quanntity",
+          "name" : "quantity",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2261,7 +2261,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "quanntity",
+          "name" : "quantity",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2323,7 +2323,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "quanntity",
+          "name" : "quantity",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2416,7 +2416,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "quanntity",
+          "name" : "quantity",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",

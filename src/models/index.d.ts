@@ -1,43 +1,28 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
 
-
-
-
-type ProductMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type CartProductMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 export declare class Product {
   readonly id: string;
   readonly title: string;
-  readonly discription?: string | null;
+  readonly description?: string;
   readonly image: string;
   readonly images: string[];
-  readonly options?: string[] | null;
-  readonly avgRating: number;
-  readonly ratings?: number | null;
+  readonly options?: string[];
+  readonly avgRating?: number;
+  readonly ratings?: number;
   readonly price: number;
-  readonly oldPrice?: number | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Product, ProductMetaData>);
-  static copyOf(source: Product, mutator: (draft: MutableModel<Product, ProductMetaData>) => MutableModel<Product, ProductMetaData> | void): Product;
+  readonly oldPrice?: number;
+  constructor(init: ModelInit<Product>);
+  static copyOf(source: Product, mutator: (draft: MutableModel<Product>) => MutableModel<Product> | void): Product;
 }
 
 export declare class CartProduct {
   readonly id: string;
   readonly userSub: string;
-  readonly quanntity: number;
-  readonly option?: string | null;
+  readonly quantity: number;
+  readonly option?: string;
   readonly productID: string;
-  readonly product?: Product | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<CartProduct, CartProductMetaData>);
-  static copyOf(source: CartProduct, mutator: (draft: MutableModel<CartProduct, CartProductMetaData>) => MutableModel<CartProduct, CartProductMetaData> | void): CartProduct;
+  readonly product?: Product;
+  constructor(init: ModelInit<CartProduct>);
+  static copyOf(source: CartProduct, mutator: (draft: MutableModel<CartProduct>) => MutableModel<CartProduct> | void): CartProduct;
 }

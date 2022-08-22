@@ -134,8 +134,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "quanntity": {
-                    "name": "quanntity",
+                "quantity": {
+                    "name": "quantity",
                     "isArray": false,
                     "type": "Int",
                     "isRequired": true,

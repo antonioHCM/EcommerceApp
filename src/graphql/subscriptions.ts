@@ -70,7 +70,7 @@ export const onCreateCartProduct = /* GraphQL */ `
     onCreateCartProduct {
       id
       userSub
-      quanntity
+      quantity
       option
       productID
       product {
@@ -103,7 +103,7 @@ export const onUpdateCartProduct = /* GraphQL */ `
     onUpdateCartProduct {
       id
       userSub
-      quanntity
+      quantity
       option
       productID
       product {
@@ -136,7 +136,7 @@ export const onDeleteCartProduct = /* GraphQL */ `
     onDeleteCartProduct {
       id
       userSub
-      quanntity
+      quantity
       option
       productID
       product {

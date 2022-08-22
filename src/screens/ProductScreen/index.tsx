@@ -1,23 +1,22 @@
 /* eslint-disable prettier/prettier */
-import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import styles from './styles';
-import product from '../../data/product';
-import QuantitySelector from '../../components/QuantitySelector';
+import {Text, ScrollView, ActivityIndicator} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import {useRoute} from '@react-navigation/native';
+import {DataStore, Auth} from 'aws-amplify';
+import {Product, CartProduct} from '../../models';
+
+import styles from './styles';
+import QuantitySelector from '../../components/QuantitySelector';
 import Button from '../../components/Button';
 import ImageCarousel from '../../components/ImageCarousel';
-import { useRoute } from '@react-navigation/native';
-import { DataStore } from 'aws-amplify';
-import { Product } from '../../models';
-import { CartProduct } from '../../models';
 
 const ProductScreen = () => {
     const [selectedOption, setSelectedOption] = useState<string |null>(null);
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState<Product | undefined>(undefined);
     const route = useRoute();
-    
+
     useEffect( () => {
       if (!route.params?.id) {
         return;
@@ -30,23 +29,28 @@ const ProductScreen = () => {
         setSelectedOption(product.options[0]);
   }
 }, [product]);
-const onAddtoCart= async () =>{
+
+const onAddToCart = async () => {
   const userData = await Auth.currentAuthenticatedUser();
-  if (!product || userData) {
+
+  if (!product || !userData) {
     return;
   }
-  
+
   const newCartProduct = new CartProduct({
     userSub: userData.attributes.sub,
     quantity,
     option: selectedOption,
     productID: product.id,
   });
-  DataStore.save(newCartProduct);
+   await DataStore.save(newCartProduct);
 };
+
 if (!product) {
   return <ActivityIndicator />;
 }
+
+
   return (
     <ScrollView style={styles.root}>
       <Text  style={styles.title}>Product screen</Text>
@@ -71,7 +75,7 @@ if (!product) {
       {/* Quantity selector*/}
         <QuantitySelector quantity={quantity} setQuantity={setQuantity}/>
       {/* Button*/}
-      <Button text={'Add to cart'} onPress={(onAddtoCart) => {console.warn('Add to cart')}} />
+      <Button text={'Add to cart'} onPress={onAddToCart} />
       <Button text={'Buy now'} onPress={() => {console.warn('Buy now')}} />
     </ScrollView>
   );

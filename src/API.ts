@@ -136,7 +136,7 @@ export type DeleteProductInput = {
 export type CreateCartProductInput = {
   id?: string | null,
   userSub: string,
-  quanntity: number,
+  quantity: number,
   option?: string | null,
   productID: string,
   _version?: number | null,
@@ -144,7 +144,7 @@ export type CreateCartProductInput = {
 
 export type ModelCartProductConditionInput = {
   userSub?: ModelStringInput | null,
-  quanntity?: ModelIntInput | null,
+  quantity?: ModelIntInput | null,
   option?: ModelStringInput | null,
   productID?: ModelIDInput | null,
   and?: Array< ModelCartProductConditionInput | null > | null,
@@ -172,7 +172,7 @@ export type CartProduct = {
   __typename: "CartProduct",
   id: string,
   userSub: string,
-  quanntity: number,
+  quantity: number,
   option?: string | null,
   productID: string,
   product?: Product | null,
@@ -186,7 +186,7 @@ export type CartProduct = {
 export type UpdateCartProductInput = {
   id: string,
   userSub?: string | null,
-  quanntity?: number | null,
+  quantity?: number | null,
   option?: string | null,
   productID?: string | null,
   _version?: number | null,
@@ -223,7 +223,7 @@ export type ModelProductConnection = {
 export type ModelCartProductFilterInput = {
   id?: ModelIDInput | null,
   userSub?: ModelStringInput | null,
-  quanntity?: ModelIntInput | null,
+  quantity?: ModelIntInput | null,
   option?: ModelStringInput | null,
   productID?: ModelIDInput | null,
   and?: Array< ModelCartProductFilterInput | null > | null,
@@ -326,7 +326,7 @@ export type CreateCartProductMutation = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -365,7 +365,7 @@ export type UpdateCartProductMutation = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -404,7 +404,7 @@ export type DeleteCartProductMutation = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -537,7 +537,7 @@ export type SyncCartProductsQuery = {
       __typename: "CartProduct",
       id: string,
       userSub: string,
-      quanntity: number,
+      quantity: number,
       option?: string | null,
       productID: string,
       product?:  {
@@ -578,7 +578,7 @@ export type GetCartProductQuery = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -620,7 +620,7 @@ export type ListCartProductsQuery = {
       __typename: "CartProduct",
       id: string,
       userSub: string,
-      quanntity: number,
+      quantity: number,
       option?: string | null,
       productID: string,
       product?:  {
@@ -720,7 +720,7 @@ export type OnCreateCartProductSubscription = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -754,7 +754,7 @@ export type OnUpdateCartProductSubscription = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
@@ -788,7 +788,7 @@ export type OnDeleteCartProductSubscription = {
     __typename: "CartProduct",
     id: string,
     userSub: string,
-    quanntity: number,
+    quantity: number,
     option?: string | null,
     productID: string,
     product?:  {
