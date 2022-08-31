@@ -1,9 +1,13 @@
+/* eslint-disable no-trailing-spaces */
 /* eslint-disable prettier/prettier */
 import { View, Text,Image } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import React, {useState} from 'react';
 import styles from './styles';
 import QuantitySelector from '../QuantitySelector';
+import { DataStore } from 'aws-amplify';
+import { updateProduct } from '../../graphql/mutations';
+import { CartProduct } from '../../models';
 
 
 interface CartProductItemProps {
@@ -24,9 +28,21 @@ interface CartProductItemProps {
 }
 
 const CartPoductItem = ({cartItem}: CartProductItemProps) => {
-    const { quantity: quantityProp, product } = cartItem;
-    const [quantity, setQuantity] = useState(quantityProp);
-  
+    const {product, ...cartProduct } = cartItem;
+    
+
+    const updateQuantity = async (newQuantity: number) => {
+
+      const original = await DataStore.query(CartProduct, cartProduct.id);
+      
+      await DataStore.save(
+
+        CartProduct.copyOf(original, upadated => {
+          upadated.quantity = newQuantity;
+        }),
+      );
+    };
+
     return (
     <View style={styles.root}>
       <View style={styles.row}>
@@ -54,7 +70,9 @@ const CartPoductItem = ({cartItem}: CartProductItemProps) => {
                 </View>
               </View>
             <View style={styles.quantityContainer}>
-        <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+        <QuantitySelector
+         quantity={cartProduct.quantity}
+          setQuantity={updateQuantity} />
       </View>
     </View>
   );
