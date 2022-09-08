@@ -72,7 +72,7 @@ if (!product) {
           </Text>
 
       {/* Description*/}
-      <Text style={styles.description}>{product.description}</Text>
+      <Text style={styles.description}>{product.discription}</Text>
 
       {/* Quantity selector*/}
         <QuantitySelector quantity={quantity} setQuantity={setQuantity}/>

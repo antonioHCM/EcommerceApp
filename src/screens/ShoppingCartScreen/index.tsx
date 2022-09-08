@@ -10,7 +10,7 @@ import {Product, CartProduct} from '../../models';
 import { DataStore, Auth } from 'aws-amplify';
 import { ListProductsQuery } from '../../API';
 import { listCartProducts } from '../../graphql/queries';
-import product from '../../data/product';
+
 
 
 const ShoppingCartScreen = () => {

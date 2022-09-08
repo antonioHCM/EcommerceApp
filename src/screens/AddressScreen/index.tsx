@@ -5,6 +5,11 @@ import styles from '../AddressScreen/styles';
 import countryList from 'country-list';
 import { Picker } from '@react-native-picker/picker';
 import Button from '../../components/Button';
+import { DataStore, Auth } from 'aws-amplify';
+import {Order, OderProduct, CartProduct} from '../../models';
+import { OrderProduct } from '../../models';
+import { useNavigation } from '@react-navigation/native';
+
 
 const countries = countryList.getData();
 
@@ -14,8 +19,43 @@ const AddressScreen = () => {
     const [phonenumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
     const [addressError, setAddressError] = useState('Please fix the fields before checking out');
-    console.log(fullname);
 
+
+
+    const navigation = useNavigation();
+
+    const saveOrder = async () =>{
+      //Get user
+      const userData = await Auth.currentAuthenticatedUser();
+      // New order
+        const newOrder = await DataStore.save(
+          new Order({
+            userSub: userData.attributes.sub,
+            fullName: fullname,
+            phoneNumber: phonenumber,
+            country,
+            address,
+          }),
+        );
+      // fetch user's cart items
+          const cartItems = await DataStore.query(CartProduct, cp =>
+            cp.userSub('eq', userData.attributes.sub),
+            );
+      // Attch products to order
+            await Promise.all(
+              cartItems.map(cartItem => DataStore.save(new OrderProduct({
+                quantity:cartItem.quantity,
+                option: cartItem.option,
+                productID: cartItem.productID,
+                orderID: newOrder.id,
+                })))
+            );
+      // Delete cart items
+            await Promise.all(cartItems.map(cartItem => DataStore.delete(cartItem)));
+
+            navigation.navigate('Home');
+
+    };
     const onCheckout = () =>{
       if(!fullname) {
         Alert.alert('Please fill in the full Name field');
@@ -54,8 +94,8 @@ const AddressScreen = () => {
              <Text style={styles.label}>Phone Number</Text>
              <TextInput style={styles.input}
              keyboardType={'phone-pad'}
-             placeholder="Phone Number" 
-             value={phonenumber} 
+             placeholder="Phone Number"
+             value={phonenumber}
              onChangeText={setPhoneNumber}
               />
    </View>

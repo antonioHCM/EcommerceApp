@@ -2,7 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import { View,StyleSheet, FlatList } from 'react-native';
 import PoductItem from '../../components/ProductItem';
-import products from '../../data/products';
 import { DataStore } from 'aws-amplify';
 import {Product} from "../../models"
 
@@ -18,7 +17,7 @@ const HomeScreen = ({searchValue}: {searchValue: string}) => {
       <FlatList
         data={products}
         renderItem={({item}) => <PoductItem item={item} />}
-        showsVerticalScrollIndicator= {false}
+        showsVerticalScrollIndicator= {true}
          />
     </View>
   );
